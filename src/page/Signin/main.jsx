@@ -1,26 +1,75 @@
-import { useForm } from 'react-hook-form'
+import { useFormik } from "formik";
 
 const Signin = () => {
-    const {register,handleSubmit,formState:{errors}} = useForm()
-    const onSubmit = (data)=>{
-        console.log(data);
-    }
+  const formik = useFormik({
+    initialValues: {
+      firstname: "Mim",
+      lastname: "Rahman",
+      email: "mim77@gmail.com",
+      phone: 17284732843,
+    },
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
   return (
     <>
-     <div>Signin</div>
-     <form onSubmit={handleSubmit(onSubmit)}>
+      <div>Contact Us Form</div>
+      <br />
+      <form onSubmit={formik.handleSubmit}>
         <div>
-        <input placeholder='Enter your name' {...register("name",{required:true,minLength:2})} />
-        {errors.name && <p>This field is required</p>}
-        <input placeholder='Enter your password' type='password' {...register("password")}/>
-        <button type='submit'>Submit</button>
-        </div>
-       
-     </form>
-    </>
-   
-    
-  )
-}
+          <div>
+            <label htmlFor="firstname">First Name</label>
+            <br/>
+            <input
+            id="firstname"
+            name="firstname"
+            type="text"
+            onChange={formik.handleChange}
+          />
+          </div>
+          <br/>
 
-export default Signin
+          <div>
+            <label htmlFor="lastname">Last Name</label>
+            <br/>
+            <input
+            id="lastname"
+            name="lastname"
+            type="text"
+            onChange={formik.handleChange}
+          />
+          </div>
+          <br/>
+
+          <div>
+            <label htmlFor="email">Email Address</label>
+            <br/>
+            <input
+            id="email"
+            name="email"
+            type="email"
+            onChange={formik.handleChange}
+          />
+          </div>
+          <br/>
+          <div>
+            <label htmlFor="email">Phone</label>
+            <br/>
+            <input
+            id="phone"
+            name="phone"
+            type="tel"
+            onChange={formik.handleChange}
+          />
+          </div>
+          <br/>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </>
+  );
+};
+
+export default Signin;
