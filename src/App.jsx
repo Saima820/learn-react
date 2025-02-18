@@ -1,22 +1,21 @@
+import { Route, Routes } from "react-router-dom";
 
-import { Route, Routes } from 'react-router-dom'
-import './App.css'
-import Home from './page/home/main'
-import AboutUs from './page/About Us/main'
-import Signin from './page/Signin/main'
+import Home from "./page/home/main";
+import AboutUs from "./page/About Us/main";
+import Signin from "./page/Signin/main";
+import ContactUs from "./page/Contact Us/main";
 
 function App() {
-
-
   return (
     <>
-   <Routes>
-    <Route path='/' element={<Home/>}/>
-    <Route path='/about-us' element={<AboutUs/>}/>
-    <Route path='/signin' element={<Signin/>}/>
-   </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
